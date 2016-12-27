@@ -33,8 +33,8 @@
             //$objFace->sendMessage(array('recipient' => array('id' => $sender),'message' => array('text' => utf8_encode('Olá, o que você deseja fazer?'))));
             //$objFace->sendMessage($objComponent->createBooleanButtons("E ai"), $sender)
             
-            //$objFace->sendReply($objComponent->createFile("http://portal.mec.gov.br/seb/arquivos/pdf/Profa/apres.pdf"),$sender);
-            $objFace->sendReply("Teste",$sender);
+            $objFace->sendReply($objComponent->createFile("http://portal.mec.gov.br/seb/arquivos/pdf/Profa/apres.pdf"),$sender);
+            //$objFace->sendReply("Teste",$sender);
              
         }
         
