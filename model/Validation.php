@@ -38,8 +38,13 @@ class Validation{
             if(function_exists($funcao)){
 
                 $result = $funcao($dados);
-                $this->msg = $result["msg"]; 
-                return $result["success"];     
+                if(is_array($result)){
+                    $this->msg = $result["msg"]; 
+                    return $result["success"];
+                }else{
+                    $this->msg = "tipo de retorno do validador inesperado";
+                    return false;
+                }     
             }else{
                 return true;    
             }

@@ -55,7 +55,7 @@ function passo7($cpf = null) {
             }
         }
 
-        return true;
+        return array("success"=>true,"msg"=>"cpf válido");
     }
 }
 
