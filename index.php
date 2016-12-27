@@ -5,9 +5,11 @@
     require_once('model/FacebookHelper.php');
     require_once('model/Components.php');
     require_once('model/ArqLog.php');
+    require_once('model/Validation.php');
 
     $objComponent = new Components();
     $objFace = new FacebookHelper();
+    $objValida = new Validation("../util/validators.php");
     
     
     //Autenticação do Facebook

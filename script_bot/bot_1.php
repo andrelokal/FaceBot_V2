@@ -2,7 +2,7 @@
 
     function processMessage($message) {
         
-        global $objFace, $objComponent, $objLog, $sender;
+        global $objFace, $objComponent, $objLog, $sender, $text, $objValida;
                 
         $dadosUser = $objLog->getData();
         
@@ -19,17 +19,40 @@
                7=>"Por favor, informe o seu CPF.",
                8=>"Por favor, informe o seu Email.",
                9=>"{$dadosUser['profile']['first_name']}, veja o resumo de sua reserva abaixo:");
-        
-        $sender = $message['sender']['id'];
-        $text = $message['message']['text'];
-        
 
-        
         if(is_array($dadosUser)){
 
             if(isset($dadosUser['passo']) && $dadosUser['passo'] < 9){
                 if (isset($text)){
+                    
+                    if(!$objValida->validarDados($text,"passo".$dadosUser['passo']))
+                        $objFace->sendReply(utf8_encode($array[0]),$sender); 
+                        
+                        
+                    
                     $dadosUser['resp'][$dadosUser['passo']] = $text;     
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 } 
                 $dadosUser['passo'] = $dadosUser['passo'] + 1;
                 
