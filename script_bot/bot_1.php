@@ -25,29 +25,15 @@
             if(isset($dadosUser['passo']) && $dadosUser['passo'] < 9){
                 if (isset($text)){
                     
-                    if(!$objValida->validarDados($text,"passo".$dadosUser['passo']))
-                        $objFace->sendReply(utf8_encode($array[0]),$sender); 
+                    if(!$objValida->validarDados($text,"passo".$dadosUser['passo'])){
+                        $objFace->sendReply(utf8_encode($objValida->msg),$sender);
+                        exit;     
+                    }
+ 
                         
                         
                     
                     $dadosUser['resp'][$dadosUser['passo']] = $text;     
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 
                 
                 

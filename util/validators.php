@@ -12,7 +12,7 @@ function validarTeste($data){
 }
 */
 
-function passo1(){
+function passo1($dados){
     return array("success"=>false,"msg"=>"deu ruim!!!");    
 }
 
