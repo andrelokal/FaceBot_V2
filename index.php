@@ -9,7 +9,7 @@
 
     $objComponent = new Components();
     $objFace = new FacebookHelper();
-    $objValida = new Validation("../util/validators.php");
+    $objValida = new Validation("util/validators.php");
     
     
     //Autenticação do Facebook
