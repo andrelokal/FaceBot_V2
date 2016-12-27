@@ -2,7 +2,7 @@
 
     function processMessage($message) {
         
-        global $objFace, $objComponent, $objLog;
+        global $objFace, $objComponent, $objLog, $sender;
                 
         $dadosUser = $objLog->getData();
         
@@ -35,7 +35,7 @@
                 
                 $objLog->setData($dadosUser);
                 
-                $objFace->sendMessage(array('recipient' => array('id' => $sender),'message' => array('text' => utf8_encode($array[$dadosUser['passo']]))));
+                $objFace->sendReply(utf8_encode($array[$dadosUser['passo']]),$sender);
                 if($dadosUser['passo'] >= 9){
                    $dadosUser['robo'] = '';
                    $objLog->setData($dadosUser); 
@@ -45,21 +45,20 @@
                 $dadosUser['passo'] = 0;
                 $dadosUser['profile'] = $objFace->getData($sender);
                 $objLog->setData($dadosUser);
-                $objFace->sendMessage(array('recipient' => array('id' => $sender),'message' => array('text' => utf8_encode($array[0]))));    
+                $objFace->sendReply(utf8_encode($array[0]),$sender);    
             }
             
         }else{
             $dadosUser['passo'] = 0;
             $dadosUser['profile'] = $objFace->getData($sender);
             $objLog->setData($dadosUser);
-            $objFace->sendMessage(array('recipient' => array('id' => $sender), 
-                                        'message' => array('text' => utf8_encode($array[0]))));    
+            $objFace->sendReply(utf8_encode($array[0]),$sender);   
         }
 
     }
 
-    if (isset($update['entry'][0]['messaging'][0])) {
-        processMessage($update['entry'][0]['messaging'][0]);
+    if (isset($message)) {
+        processMessage($message);
     }
 
 ?>

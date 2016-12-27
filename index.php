@@ -20,11 +20,13 @@
     $sender = $message['sender']['id'];
     $text = $message['message']['text'];
     
+    
     if (isset($text)) {
        
         $objLog = new ArqLog($sender);
+        
         $dados = $objLog->getData();
-        $dados['robo'] = 0;
+        
         
         if(preg_match('[reserva|reservar|alugar|aluga]', strtolower($text)) || $dados['robo'] == 1){
             include('script_bot/bot_1.php'); //todo: verificar a melhor forma de rotear para o arquivo certo!!!
