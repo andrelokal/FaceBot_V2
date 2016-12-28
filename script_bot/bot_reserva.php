@@ -61,7 +61,7 @@
         
         
         //Verifica Fim de Conversa
-        if($context['passo'] = 9){
+        if($context['passo'] == 9){
            $context = array();
            $context['robo'] = '';
            $objLog->setData($context); 
