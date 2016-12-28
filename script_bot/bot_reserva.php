@@ -20,10 +20,12 @@
                7=>"Por favor, informe o seu CPF.",
                8=>"Por favor, informe o seu Email.",
                9=>"{$context['profile']['first_name']}, veja o resumo de sua reserva abaixo:");
+        
+        $maxSteps = count($arrQuestion) - 1;
 
         //Verificação de inicio.
-        if(!isset($context['passo'])){
-            $context['passo'] = 0;
+        if(!isset($context['step'])){
+            $context['step'] = 0;
             $context['profile'] = $objFace->getData($sender);
             $objLog->setData($context);
             $objFace->sendReply(utf8_encode($arrQuestion[0]),$sender);
@@ -31,37 +33,37 @@
         }
   
         //Faz validação dos dados recebidos
-        if(!$objValida->validarDados($text,"passo".$context['passo'])){
+        if(!$objValida->validarDados($text,"step".$context['step'])){
             $objFace->sendReply(utf8_encode($objValida->msg),$sender);
             exit;     
         }
 
-        switch ($context['passo']){
+        switch ($context['step']){
             case "1":
-                //tratamento dado ao passo 1    
+                //tratamento dado ao step 1    
             //break;
             case "2":
-                //tratamento dado ao passo 2
+                //tratamento dado ao step 2
             //break;
             case "3":
-                //tratamento dado ao passo 3 ...
+                //tratamento dado ao step 3 ...
             //break;
         }
 
-        $context['resp'][$context['passo']] = $text;     
+        $context['resp'][$context['step']] = $text;     
 
-        //Incrementa proximo passo
-        $context['passo'] = $context['passo'] + 1;
+        //Incrementa proximo step
+        $context['step'] = $context['step'] + 1;
         
         //Salva atualização de contexto
         $objLog->setData($context);
         
         //Envia proxima mensagem
-        $objFace->sendReply(utf8_encode($arrQuestion[$context['passo']]),$sender);
+        $objFace->sendReply(utf8_encode($arrQuestion[$context['step']]),$sender);
         
         
         //Verifica Fim de Conversa
-        if($context['passo'] == 9){
+        if($context['step'] == $maxSteps){
            $context = array();
            $context['robo'] = '';
            $objLog->setData($context); 

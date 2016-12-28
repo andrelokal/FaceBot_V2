@@ -13,7 +13,7 @@ function validarTeste($data){
 */
 
 //Validar CPF
-function passo7($cpf = null) {
+function step7($cpf = null) {
 
     // Verifica se um número foi informado
     if(empty($cpf)) {
@@ -62,7 +62,7 @@ function passo7($cpf = null) {
 
 
 //Validar Email
-function passo8($email) {
+function step8($email) {
     $conta = "^[a-zA-Z0-9\._-]+@";
     $domino = "[a-zA-Z0-9\._-]+.";
     $extensao = "([a-zA-Z]{2,4})$";
