@@ -12,6 +12,7 @@ function validarTeste($data){
 }
 */
 
+//Validar CPF
 function passo7($cpf = null) {
 
     // Verifica se um número foi informado
@@ -57,6 +58,21 @@ function passo7($cpf = null) {
 
         return array("success"=>true,"msg"=>"cpf válido");
     }
+}
+
+
+//Validar Email
+function passo8($email) {
+    $conta = "^[a-zA-Z0-9\._-]+@";
+    $domino = "[a-zA-Z0-9\._-]+.";
+    $extensao = "([a-zA-Z]{2,4})$";
+    $pattern = $conta.$domino.$extensao;
+    
+    if (ereg($pattern, $email))
+        return array("success"=>true,"msg"=>"email válido");
+    
+    else
+        return array("success"=>false,"msg"=>"email inválido");
 }
 
 

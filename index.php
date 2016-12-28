@@ -27,11 +27,11 @@
        
         $objLog = new ArqLog($sender);
         
-        $dados = $objLog->getData();
+        $context = $objLog->getData();
         
         
-        if(preg_match('[reserva|reservar|alugar|aluga]', strtolower($text)) || $dados['robo'] == 1){
-            include('script_bot/bot_1.php'); //todo: verificar a melhor forma de rotear para o arquivo certo!!!
+        if(preg_match('[reserva|reservar|alugar|aluga]', strtolower($text)) || $context['robo'] == 'reserva'){
+            include('script_bot/bot_reserva.php'); //todo: verificar a melhor forma de rotear para o arquivo certo!!!
         
         }else{
             //$objFace->sendMessage(array('recipient' => array('id' => $sender),'message' => array('text' => utf8_encode('Olá, o que você deseja fazer?'))));
