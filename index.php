@@ -30,7 +30,7 @@
         $context = $objLog->getData();
         
         
-        if(preg_match('[reserva|reservar|alugar|aluga]', strtolower($text)) || $context['robo'] == 'reserva'){
+        if(preg_match('[reserva|reservar|alugar|aluga]', strtolower($text)) || $context['robot'] == 'reserva'){
             include('script_bot/bot_reserva.php'); //todo: verificar a melhor forma de rotear para o arquivo certo!!!
         
         }else{

@@ -7,7 +7,7 @@
                 
         $context = $objLog->getData();
         
-        $context['robo'] = 'reserva'; //Seta a rota escolhida pelo usuario
+        $context['robot'] = 'reserva'; //Seta a rota escolhida pelo usuario
         
         $arrQuestion = array(
                0=>"Vamos começar!", 
@@ -65,7 +65,7 @@
         //Verifica Fim de Conversa
         if($context['step'] == $maxSteps){
            $context = array();
-           $context['robo'] = '';
+           $context['robot'] = '';
            $objLog->setData($context); 
         }
 
