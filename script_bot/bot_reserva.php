@@ -3,7 +3,15 @@
     //processa mensagem
     function processMessage($message) {
         
-        global $objFace, $objComponent, $objLog, $sender, $text, $objValida;
+        //Trazendo objetos instaciados para dentro da função
+        global $objFace, 
+               $objComponent, 
+               $objLog,  
+               $objValida;
+        
+        
+        $sender = $message['sender']['id'];
+        $text   = $message['message']['text'];
                 
         $context = $objLog->getData();
         
