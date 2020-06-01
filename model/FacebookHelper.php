@@ -1,8 +1,8 @@
 <?php
 /**
  * FacebookHelper
- * INTERFACE DE COMUNICA«√O COM O FACEBOOK
- * @author      AndrÈ Martos
+ * INTERFACE DE COMUNICA√á√ÉO COM O FACEBOOK
+ * @author      Andr√© Martos
  * @version     1.0
  * @date        14/12/2016
  */
@@ -11,15 +11,14 @@
  
     private $tokenFacebook = "";
     private $apiUrl = ""; 
-    public $tokenAplication = "movidabot2";    
+    public $tokenAplication = $tokenAplication;    
     
-    // Quando a Classe È Instaciada ela automaticamente verifica se a chamada partiu de produÁ„o ou homologaÁ„o e define o token de resposta
+    // Quando a Classe √© Instaciada ela automaticamente verifica se a chamada partiu de produ√ß√£o ou homologa√ß√£o e define o token de resposta
     public function __construct($chave = ""){
         if($_SERVER['HTTP_HOST']=='bot.movida.com.br'){
-            $this->tokenFacebook = "EAAB2kQ7OmegBAFDI8UsXxYzxyLtGlx40MYBfFQZAZAl3ISPm2A1KUJxWZByO9GZAWcVxWCUZCboZBwTjJpgQq3X1ji7gkC4XRPdvkR6yJoYStIgkkVierKyejODley3gZABMabOqFHL3xfefrFMLB2kplRxl6f4rjFU4U94NGUXEAZDZD";
+            $this->tokenFacebook = $tokenFacebook;
         }else{
-            //$this->tokenFacebook = "EAAEV6MnZAtYQBAFmzMZC85B8wMcohjKNzwNZBmWfKbw14fgQ2NGL4MyHkPCORU1K887s8a64ZC6wZCJDkllPXpiMVr8PBp0AcqTWGuxOMqUO2qaroJzSyUgDLUa5mGv5PNUeKc6eQWRW8ZARFFQ9L7otAW70dlZCRZBc7ObqyNiPxQZDZD";
-            $this->tokenFacebook = "EAACcxcXuiz8BABQZA6zcHIIrqY3ItMEFhNlxb3WZA14yfs3sx0yGr4yYhiWTNmZCOuQTxnwNWceLxytMedf0FEFLbxhtX60qfNGH5oO64ea1sL6vKd3Ipg6ZASCzWMZBlPY9pezc4lhSTSE7C79Ai9sOttyJyAySSjVD3vhKUAgZDZD";    
+            $this->tokenFacebook = $tokenFacebook;   
         }
         
         if($chave){
@@ -34,13 +33,13 @@
     }  
  
  
-    //AutenticaÁ„o do Faceboock
+    //Autentica√ß√£o do Faceboock
     public function getAuthentication($request){
         if(isset($request['hub_challenge'])) {
             $challenge = $request['hub_challenge'];
             $hub_verify_token = $request['hub_verify_token'];
             
-            /**SeguranÁa da aplicaÁ„o desativado por enquanto
+            /**Seguran√ßa da aplica√ß√£o desativado por enquanto
             * todo:configurar no facebook
             * 
             if ($hub_verify_token != $this->tokenAplication){
@@ -109,7 +108,7 @@
         }
 
         if (empty($arr)){
-            error_log("Resposta inv·lida!");
+            error_log("Resposta inv√°lida!");
             return;
         }
         
